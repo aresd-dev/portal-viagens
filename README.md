@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portal de Viagens
 
-## Getting Started
+Portal de destinos turísticos brasileiros desenvolvido com Next.js, App Router e TypeScript. Apresenta fotos e informações sobre Rio de Janeiro, Fernando de Noronha, Chapada Diamantina e Gramado, com uma listagem de cards e páginas de detalhes.
 
-First, run the development server:
+## Estrutura
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `app/page.tsx`: página inicial com apresentação do portal.
+- `app/layout.tsx`: layout raiz da aplicação.
+- `app/destinos/page.tsx`: listagem dos destinos.
+- `app/destinos/page.module.css`: título e grid responsivo da listagem.
+- `app/destinos/[id]/page.tsx`: detalhes do destino selecionado.
+- `components/Layout.tsx`: cabeçalho, navegação, conteúdo e rodapé compartilhados.
+- `components/CardDestino.tsx`: card reutilizável com imagem e nome do destino.
+- `data/destinos.ts`: identificadores, nomes, descrições e caminhos das imagens.
+- `public/imagens/`: imagens dos destinos.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Os estilos das páginas e dos componentes são organizados em CSS Modules, com estilos globais em `app/globals.css`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Rotas disponíveis
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Apresentação do portal e acesso à listagem |
+| `/destinos` | Cards dos destinos disponíveis |
+| `/destinos/rio-de-janeiro` | Detalhes do Rio de Janeiro |
+| `/destinos/fernando-de-noronha` | Detalhes de Fernando de Noronha |
+| `/destinos/chapada-diamantina` | Detalhes da Chapada Diamantina |
+| `/destinos/gramado` | Detalhes de Gramado |
 
-## Learn More
+As páginas de detalhes utilizam a rota dinâmica `/destinos/[id]`. Identificadores não cadastrados retornam uma página de destino não encontrado (404).
 
-To learn more about Next.js, take a look at the following resources:
+## Execução
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Instale as dependências com `npm install` e inicie o servidor de desenvolvimento com `npm run dev`. Acesse [http://localhost:3000](http://localhost:3000).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run lint`: verifica o código com ESLint.
+- `npm run build`: gera a versão de produção.
+- `npm start`: inicia o servidor após o build.
